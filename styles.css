@@ -61,12 +61,14 @@ header.scrolled {
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 12rem;
+    width: 12rem;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
 .header-info {
@@ -80,15 +82,16 @@ header.scrolled {
 }
 
 .contact-info div:first-child {
-    font-size: 14px;
-    color: var(--gray-600);
-    margin-bottom: 4px;
-    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-weight: 700;
 }
 
 .contact-info div:last-child {
-    font-size: 13px;
-    color: var(--gray-500);
+    font-size: 14px;
+    color: var(--gray-600);
+    font-weight: 500;
 }
 
 /* Mobile Menu Button */
@@ -187,14 +190,16 @@ nav a:hover {
 
 /* Hero */
 .hero {
-    background: linear-gradient(rgba(139, 31, 31, 0.8), rgba(44, 24, 21, 0.8)),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%232c1810" width="1200" height="400"/><path fill="%235a2a2a" d="M0,200 Q300,150 600,200 T1200,200 L1200,400 L0,400 Z"/></svg>');
+    background: linear-gradient(rgba(220, 38, 38, 0.85), rgba(44, 24, 21, 0.85)),
+    url('./public/store.jpeg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     color: white;
     text-align: center;
     padding: 80px 0;
     margin-bottom: 60px;
+    position: relative;
 }
 
 .hero-content {
@@ -215,14 +220,22 @@ nav a:hover {
     font-size: 1.3rem;
     color: white;
     margin-bottom: 40px;
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .cta-button {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: var(--white);
     padding: 16px 32px;
     border: none;
     border-radius: 50px;
@@ -237,9 +250,26 @@ nav a:hover {
     box-shadow: var(--shadow);
 }
 
+.cta-button.primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--white);
+}
+
+.cta-button.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
+}
+
+.cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
 }
 
 /* Services */
@@ -411,6 +441,27 @@ footer {
     color: var(--primary);
 }
 
+.footer-section p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #ecf0f1;
+}
+
+.footer-section p:last-child {
+    margin-bottom: 0;
+}
+
+.footer-section-links h4 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.footer-section-links p {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -443,7 +494,12 @@ footer {
     .header-content {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
+        gap: 15px;
+    }
+
+    .logo-img {
+        height: 8rem;
+        width: 8rem;
     }
 
     .header-info {
@@ -454,6 +510,17 @@ footer {
 
     .contact-info {
         text-align: center;
+    }
+
+    .hero {
+        background-attachment: scroll;
+        padding: 80px 0;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
 
     .hamburger {

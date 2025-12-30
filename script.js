@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const nav = document.querySelector("nav .container");
   const navUl = nav.querySelector("ul");
 
-  // Create hamburger button for mobile
   const hamburger = document.createElement("button");
   hamburger.className = "hamburger";
   hamburger.innerHTML = `
@@ -12,16 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   hamburger.setAttribute("aria-label", "Toggle menu");
 
-  // Insert hamburger before the ul
   nav.insertBefore(hamburger, navUl);
 
-  // Toggle menu functionality
   hamburger.addEventListener("click", function () {
     hamburger.classList.toggle("active");
     navUl.classList.toggle("active");
   });
 
-  // Close menu when clicking on a link
   navUl.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       hamburger.classList.remove("active");
@@ -29,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Close menu when clicking outside
   document.addEventListener("click", function (e) {
     if (!nav.contains(e.target)) {
       hamburger.classList.remove("active");
@@ -38,28 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Header scroll effect
-const header = document.getElementById('header');
+const header = document.getElementById("header");
 let lastScrollY = window.scrollY;
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
 
-    // Hide/show header on scroll
-    if (window.scrollY > lastScrollY && window.scrollY > 200) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
+  if (window.scrollY > lastScrollY && window.scrollY > 200) {
+    header.style.transform = "translateY(-100%)";
+  } else {
+    header.style.transform = "translateY(0)";
+  }
 
-    lastScrollY = window.scrollY;
+  lastScrollY = window.scrollY;
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -67,23 +59,21 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     if (target) {
       const headerHeight = header.offsetHeight;
       const targetPosition = target.offsetTop - headerHeight;
-      
+
       window.scrollTo({
         top: targetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   });
 });
 
-// Return Policy Modal
 function showReturnPolicy() {
   alert(
     "Return Policy:\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Returns accepted within 30 days of purchase with original receipt. Repairs come with 90-day warranty. \n\nFor full details, please visit our store or call (403) 248-2353."
   );
 }
 
-// Add loading animation to service cards
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -50px 0px",
@@ -98,7 +88,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe service cards and brand logos for animation
 document.querySelectorAll(".service-card, .brand-logo").forEach((el) => {
   el.style.opacity = "0";
   el.style.transform = "translateY(30px)";
@@ -106,11 +95,13 @@ document.querySelectorAll(".service-card, .brand-logo").forEach((el) => {
   observer.observe(el);
 });
 
-// Phone number click-to-call functionality
-document.querySelectorAll('.contact-info').forEach(element => {
-    element.addEventListener('click', function(e) {
-        if (e.target.textContent.includes('(403)') || e.target.closest('div').textContent.includes('(403)')) {
-            window.location.href = 'tel:4032482353';
-        }
-    });
+document.querySelectorAll(".contact-info").forEach((element) => {
+  element.addEventListener("click", function (e) {
+    if (
+      e.target.textContent.includes("(403)") ||
+      e.target.closest("div").textContent.includes("(403)")
+    ) {
+      window.location.href = "tel:4032482353";
+    }
+  });
 });
